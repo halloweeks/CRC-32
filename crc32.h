@@ -71,7 +71,7 @@ static unsigned int crc32_table[256] =
 	0xB40BBE37, 0xC30C8EA1, 0x5A05DF1B, 0x2D02EF8D 
 };
 
-unsigned int crc32_compute(const unsigned char *data, unsigned int length) {
+unsigned int crc32(const unsigned char *data, unsigned int length) {
 	unsigned crc = 0xFFFFFFFF;
 	
 	for (unsigned int index = 0; index< length; index++) {

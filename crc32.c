@@ -4,9 +4,8 @@
 int main() {
 	unsigned char data[] = "halloweeks";
 	
-	unsigned int crc = crc32_compute(data, 10);
+	unsigned int crc = crc32(data, 10);
 	
-	printf("CRC: %08x\n", crc);
-	
+	printf("%08x\n", crc);
 	return 0;
 }
