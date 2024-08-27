@@ -74,7 +74,7 @@ static crc32_t crc32_table[256] =
 };
 
 crc32_t crc32(const void *data, unsigned int length) {
-	unsigned crc = 0xFFFFFFFF;
+	crc32_t crc = 0xFFFFFFFF;
 	
 	for (unsigned int index = 0; index< length; index++) {
 		crc = (crc >> 8) ^ crc32_table[(crc ^ ((unsigned char*)data)[index]) & 0xFF];
@@ -88,7 +88,7 @@ crc32_t crc32_init() {
 }
 
 crc32_t crc32_update(unsigned int crc, void *data, unsigned int length) {
-	unsigned int _crc = crc;
+	crc32_t _crc = crc;
 	
 	for (unsigned int index = 0; index < length; index++) {
 		_crc = (_crc >> 8) ^ crc32_table[(_crc ^ ((unsigned char*)data)[index]) & 0xFF];
