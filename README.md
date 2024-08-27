@@ -37,3 +37,23 @@ int main() {
 }
 ```
 
+## CRC32 Table Generator 
+```c
+unsigned int crc32_table[256] = {0};
+
+void make_crc_table(unsigned int crcTable[]) {
+    const unsigned int POLYNOMIAL = 0xEDB88320;
+
+    for (unsigned int b = 0; b < 256; ++b) {
+        unsigned int remainder = b;
+        for (unsigned int bit = 0; bit < 8; ++bit) {
+            if (remainder & 1)
+                remainder = (remainder >> 1) ^ POLYNOMIAL;
+            else
+                remainder >>= 1;
+        }
+        crcTable[b] = remainder;
+    }
+}
+```
+
