@@ -3,7 +3,9 @@
 #ifndef __CRC_32__
 #define __CRC_32__
 
-static unsigned int crc32_table[256] =
+typedef unsigned int crc32_t;
+
+static crc32_t crc32_table[256] =
 {
 	0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA,
 	0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3,
@@ -71,9 +73,7 @@ static unsigned int crc32_table[256] =
 	0xB40BBE37, 0xC30C8EA1, 0x5A05DF1B, 0x2D02EF8D 
 };
 
-typedef unsigned int crc32_t;
-
-unsigned int crc32(const void *data, unsigned int length) {
+crc32_t crc32(const void *data, unsigned int length) {
 	unsigned crc = 0xFFFFFFFF;
 	
 	for (unsigned int index = 0; index< length; index++) {
@@ -83,11 +83,11 @@ unsigned int crc32(const void *data, unsigned int length) {
 	return crc ^ 0xFFFFFFFF;
 }
 
-unsigned int crc32_init() {
+crc32_t crc32_init() {
 	return 0xFFFFFFFF;
 }
 
-unsigned int crc32_update(unsigned int crc, void *data, unsigned int length) {
+crc32_t crc32_update(unsigned int crc, void *data, unsigned int length) {
 	unsigned int _crc = crc;
 	
 	for (unsigned int index = 0; index < length; index++) {
@@ -97,7 +97,7 @@ unsigned int crc32_update(unsigned int crc, void *data, unsigned int length) {
 	return _crc;
 }
 
-unsigned int crc32_final(unsigned int _crc) {
+crc32_t crc32_final(unsigned int _crc) {
 	return _crc ^ 0XFFFFFFFF;
 }
 
