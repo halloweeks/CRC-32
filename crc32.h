@@ -87,7 +87,7 @@ crc32_t crc32_init() {
 	return 0xFFFFFFFF;
 }
 
-crc32_t crc32_update(unsigned int crc, void *data, unsigned int length) {
+crc32_t crc32_update(crc32_t crc, const void *data, unsigned int length) {
 	crc32_t _crc = crc;
 	
 	for (unsigned int index = 0; index < length; index++) {
@@ -97,8 +97,9 @@ crc32_t crc32_update(unsigned int crc, void *data, unsigned int length) {
 	return _crc;
 }
 
-crc32_t crc32_final(unsigned int _crc) {
+crc32_t crc32_final(crc32_t _crc) {
 	return _crc ^ 0XFFFFFFFF;
 }
 
 #endif
+
